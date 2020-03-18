@@ -14,11 +14,8 @@ class App extends React.Component {
                 Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_CLIENT_ID} `
             }
         })
-        const allImages = []
-        response.data.results.map((element) => {
-            allImages.push(element.urls.regular)
-        })
-        this.setState({images: allImages})
+        console.log(response.data.results)
+        this.setState({images: response.data.results})
     }
 
     render(){
