@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import SearchBar from './SearchBar'
 import ImageList from './ImageList'
+import './ImageList.css'
 
 class App extends React.Component {
 
@@ -14,6 +15,7 @@ class App extends React.Component {
                 Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_CLIENT_ID} `
             }
         })
+        console.log(response.data.results)
         this.setState({images: response.data.results})
     }
 
@@ -21,7 +23,9 @@ class App extends React.Component {
         return (
             <div className="ui container" style={{marginTop: "20px"}}>
                 <SearchBar callMeOnSubmit={this.callMeOnSubmit}/>
-                <ImageList images={this.state.images}/>
+                <div className="container">
+                    <ImageList images={this.state.images}/>
+                </div>
             </div>
         )   
     }
